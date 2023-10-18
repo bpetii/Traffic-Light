@@ -4,13 +4,17 @@ import './App.css'
 type LightState = 'stop' | 'slow' | 'go'
 
 function App() {
-  const [state, lightState] = useState<LightState>('stop');
+  const [state, lightState] = useState<LightState>('slow');
+
+  const getLightClassName = (light: LightState) => {
+    return `light ${light} ` + (state === light ? "on" : "");
+  }
 
   return (
     <div className='stop-light'>
-      <div className='light red '></div>
-      <div className='light slow on'></div>
-      <div className='light go'></div>
+      <div className={getLightClassName('stop')}></div>
+      <div className={getLightClassName('slow')}></div>
+      <div className={getLightClassName('go')}></div>
     </div>
   )
 }

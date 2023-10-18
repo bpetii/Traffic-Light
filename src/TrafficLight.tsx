@@ -7,8 +7,12 @@ const GO_TIME = 5000;
 
 type LightState = 'stop' | 'slow' | 'go'
 
-const TrafficLight = () => {
-  const [state, setState] = useState<LightState>('stop');
+interface Props {
+	lightStart?: LightState
+}
+
+const TrafficLight = ({lightStart}: Props) => {
+  const [state, setState] = useState<LightState>(lightStart || 'stop');
 
   const getLightClassName = (light: LightState) => {
     return `light ${light} ` + (state === light ? "on" : "");
